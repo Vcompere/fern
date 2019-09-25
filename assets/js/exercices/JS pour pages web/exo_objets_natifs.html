@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>exo objets_natifs</title>
+</head>
+<body>
+    <script>
+	    
+	    var tab = new Array ();
+	    var i=0;
+	    var somme;
+	    console.clear()
+	    console.clear()
+	
+	    do
+	    {
+	      tab[i] = parseInt(prompt("Entrez nombre n° "+(i+1)+"\nEntrez 0 pour mettre fin à la saisie.")); //j'entre mes valeurs, rang par rang
+	      i++; // incrémente i
+	      somme += tab[i]; // somme = somme + tab[i]
+	      console.log(tab);
+	    }
+	    while (tab[i-1]!=0) // si la dernière entrée du tableau est 0, stopper la boucle
+	    tab.pop(); //supprime le 0 final
+	    console.log(tab);
+	
+	    console.log("Nombre de valeurs : " +tab.length); // nombre entrées -------  possible aussi : (i-1)
+	    console.log("Moyenne = "+somme/tab.length); // moyenne
+	    console.log("Somme = "+somme); // somme
+	    
+	
+	
+	    /////////////////////////////////////////////////////////////
+	
+	/*
+	    var tab = new Array ();
+	    var i=0;
+	    var somme = 0;
+	    console.clear()
+	
+	    do
+	    {
+	      var temp = parseInt(prompt("Entrez nombre n° "+(i+1)+"\nEntrez 0 pour mettre fin à la saisie."));
+	      tab[i] = temp;
+	      i++;
+	      somme += temp;
+	    }
+	    while (tab[i-1]!=0)
+	    tab.pop();
+	    console.log(tab);
+	
+	    console.log("Nombre de valeurs : " +tab.length);
+	    console.log("Moyenne = "+somme/tab.length);
+	    console.log("Somme = "+somme);
+	
+	*/
+	    //////////////////////////////////////////////////////////////
+	
+	/*    
+	    var tab = new Array ();
+	    var temp = 20100;
+	    var i = 0;
+	    var somme = 0;
+	    console.clear()
+	
+	    while (temp != 0)
+	    {
+	      temp = parseInt(prompt("Entrez nombre n° "+(i+1)+"\nEntrez 0 pour mettre fin à la saisie."));
+	      if (temp != 0)
+	      {
+	        tab[i] = temp;
+	        i++;
+	      }
+	        somme += temp; 
+	    }
+	
+	    console.log("Nombre de valeurs : " +i);
+	    console.log("Moyenne = "+somme/tab.length);
+	    console.log("Somme = "+somme);
+*/
+	</script>
+</body>
+</html>

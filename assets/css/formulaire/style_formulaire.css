@@ -1,0 +1,55 @@
+.missingFields
+{
+	font-size: 0.8rem;
+}
+
+.missingFieldsLeft
+{
+	font-size: 0.8rem;
+	float: right;
+}
+
+.missingFieldsRight
+{
+	font-size: 0.8rem;
+	float: left;
+}
+
+.sexDiv
+{
+	margin-top: 2.44rem;
+}
+
+.basedLine
+{
+	font-size: 2.5rem;
+}
+
+.button
+{
+	width: 10rem;
+	height: 10rem;
+	-webkit-border-radius:10rem;
+	-moz-border-radius:10rem;
+	-o-border-radius:10rem;
+	border-radius:10rem;
+	font-size: 1.5rem;
+	color: white;
+	background-color: #17a2b8;
+	border: 20px;
+}
+
+.button:hover
+{
+	width: 10rem;
+	height: 10rem;
+	-webkit-border-radius:10rem;
+	-moz-border-radius:10rem;
+	-o-border-radius:10rem;
+	border-radius:10rem;
+	font-size: 1.5rem;
+	color: white;
+	background-color: #17a2b8;
+	border: 10px;
+	border-color: red;
+}

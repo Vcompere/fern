@@ -1,0 +1,9 @@
+.imgTab
+{
+	width: 10rem;
+}
+
+.imgTab:hover
+{
+	width: 25rem;
+}
