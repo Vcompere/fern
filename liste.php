@@ -62,7 +62,7 @@
 						while ($row = $result->fetch(PDO::FETCH_OBJ))
 						{ ?> <!-- ferme php 02 -->
 						    <tr>
-							    <td><img src='assets/image/jarditou/tableau/<?= $row->pro_id; ?>.<?= $row->pro_photo; ?>' alt='<?= $row->pro_libelle; ?>' title='<?= $row->pro_libelle; ?>' class="imgTab"></td>
+							    <td><img src='assets/image/jarditou/tableau/<?= $row->pro_id; ?>.<?= $row->pro_photo; ?>' alt='<?= $row->pro_libelle; ?>' title='<?= $row->pro_libelle; ?>' class="imgTab rounded"></td>
 							    <td><?= $row->pro_id; ?></td>
 							    <td><?= $row->pro_ref; ?></td>
 							    <td><?= $row->pro_libelle; ?></td>
