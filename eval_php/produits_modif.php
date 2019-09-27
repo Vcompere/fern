@@ -16,20 +16,25 @@
 	<?php // ouvre php 01
 		require "connexion_bdd.php"; // Inclusion de notre bibliothèque de fonctions
 		$db = connexionBase(); // Appel de la fonction de connexion
-
 		$id = $_GET["ID"];
+		require "produit_form_modif.php";
 
 		$requete = "SELECT * FROM produits where pro_id = $id";
 		$result = $db->query($requete);
 		$result = $result->fetch(PDO::FETCH_OBJ);
+
+		$requete1 = "SELECT * from categories";
+		$result1 = $db->query($requete1);
+		
+
 	?> <!-- ferme php 02 -->
 	<div class="container-flex">
-		<form action="produit_form_modif.php" method="post" id="form">
+		<form action="" method="post" id="form">
 		<div class="row mt-3">
 			<div class="col-2"></div>
 			<div class="col-4">
 				<h1 class="textVertical text-info"><?= $result->pro_libelle ?></h1>
-				<img src='assets/image/jarditou/tableau/<?= $result->pro_id; ?>.<?= $result->pro_photo; ?>' alt='<?= $result->pro_libelle; ?>' title='<?= $result->pro_libelle; ?>' class="imgForm rounded ">
+				<img src='assets/image/tableau/<?= $result->pro_id; ?>.<?= $result->pro_photo; ?>' alt='<?= $result->pro_libelle; ?>' title='<?= $result->pro_libelle; ?>' class="imgForm rounded ">
 			</div>
 
 			<div class="col-4 align-self-center">
@@ -40,9 +45,9 @@
 					<label for="radio">Produit bloqué: </label>
 					</div>
 					<div>
-						<input type="radio" name="blocked" id="blockedY" value="oui">
+						<input <?php if($result->pro_bloque == 1){echo "checked";} ?> type="radio" name="blocked" id="blockedY" value="1">
 						<label for="blockedY">Oui</label>
-						<input type="radio" name="blocked" id="blockedN" value="NULL" class="ml-3">
+						<input <?php if($result->pro_bloque == 0){echo "checked";} ?> type="radio" name="blocked" id="blockedN" value="0" class="ml-3">
 						<label for="blockedN">Non</label>
 					</div>
 				</div>
@@ -60,8 +65,8 @@
 					</div>
 					<p id="dateM" class="font-weight-bold"><?= date("Y-m-d");  ?></p>
 				</div>
-				<button type="submit" id="sendButton" class="btn btn-outline-info mt-3 btn-lg" value="modifier">Modifier</button>
-				<button type="button" id="sendButton" class="btn btn-outline-danger mt-3 btn-lg ml-3" value="supprimer">Supprimer</button>
+				<button type="submit" name="update" id="updateButton" class="btn btn-outline-info mt-3 btn-lg" value="modifier">Modifier</button>
+				<button type="button" id="deleteButton" class="btn btn-outline-danger mt-3 btn-lg ml-3" value="supprimer" data-toggle="modal" data-target=".bd-example-modal-lg">Supprimer</button>
 			</div>
 		</div>
 
@@ -71,7 +76,20 @@
 				<label class="mt-3" for="ref">Référence</label>
 				<input type="text" name="ref" id="ref" class="form-control" value=<?= $result->pro_ref; ?>>	
 				<label class="mt-3" for="categ">Catégorie</label>
-				<input type="text" name="categ" id="categ" class="form-control" value=<?= $result->pro_cat_id; ?>>
+				<select name="categ" class="form-control">
+					<?php 
+						while ($row = $result1->fetch(PDO::FETCH_OBJ))
+						{
+							if (($row->cat_id) == ($result->pro_cat_id))
+							{ ?>
+								<option selected value="<?= $row->cat_id; ?>"><?= $row->cat_nom." (".$row->cat_id.")"; ?></option>
+							<?php }
+							else
+							{ ?>
+								<option value="<?= $row->cat_id; ?>"><?= $row->cat_nom." (".$row->cat_id.")"; ?></option>
+							<?php }
+							} ?>
+				</select>
 				<label class="mt-3" for="lib">Libellé</label>
 				<input type="text" name="lib" id="lib" class="form-control" value=<?= $result->pro_libelle; ?>>
 				<label class="mt-3" for="descri">Description</label>
@@ -86,6 +104,9 @@
 		</div>
 		</form>
 	</div>
+	<?php
+		require "modal.php";
+	?>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>

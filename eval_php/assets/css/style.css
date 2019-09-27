@@ -5,7 +5,7 @@
 
 .imgTab:hover
 {
-	width: 25rem;
+	width: 20rem;
 }
 
 .imgForm
@@ -39,4 +39,22 @@
 #img
 {
 	size: 50%;
+}
+
+.gif
+{
+	background-image: url("/jarditou/eval_php/assets/image/gif_formulaire.gif");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: bottom;
+}
+
+.bordLarge 
+{
+    border-width: 0.2rem !important;
+}
+
+.tC
+{
+	text-align: center !important;
 }

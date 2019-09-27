@@ -12,6 +12,13 @@
 			<li><a href="liste.php" title="accueil" class="text-white text-left ml-3">Liste</a></li>
 		</ul>
 	</header>
+	<?php
+		require "connexion_bdd.php";
+		$db= connexionBase();
+
+		$requete = "SELECT * from categories";
+		$result = $db->query($requete);
+	?>
 	<div class="container-flex">
 		<form action="produit_form_ajout.php" method="post" id="form">
 		<div class="row">
@@ -21,7 +28,13 @@
 				<label class="mt-3" for="ref">Référence</label>
 				<input type="text" name="ref" id="ref" class="form-control">	
 				<label class="mt-3" for="categ">Catégorie</label>
-				<input type="text" name="categ" id="categ" class="form-control">
+				<select name="categ" class="form-control">
+					<?php 
+						while ($row = $result->fetch(PDO::FETCH_OBJ))
+						{?>
+							<option value="<?= $row->cat_id; ?>"><?= $row->cat_nom." (".$row->cat_id.")"; ?></option>
+						<?php } ?>
+				</select>
 				<label class="mt-3" for="lib">Libellé</label>
 				<input type="text" name="lib" id="lib" class="form-control">
 				<label class="mt-3" for="descri">Description</label>
@@ -41,9 +54,9 @@
 				</div>
 				<div class="col">
 					<div id="radio">
-						<input type="radio" name="blocked" id="blockedY" value="1">
+						<input checked type="radio" name="blocked" id="blockedY" value="1">
 						<label for="blockedY">Oui</label>
-						<input type="radio" name="blocked" id="blockedN" value="NULL" class="ml-3">
+						<input type="radio" name="blocked" id="blockedN" value="0" class="ml-3">
 						<label for="blockedN">Non</label>
 					</div>
 				</div>

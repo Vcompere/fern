@@ -10,7 +10,7 @@
 	<header>
 	<ul class="bg-info nav">
 		<li><a href="liste.php" title="accueil" class="text-white text-left ml-3">Liste</a></li>
-		<li><a href="produits_ajout.php" title="Ajouter" class="text-white text-left ml-3">Ajouter un produit</a></li>
+		<li><a href="produits_ajout.php" title="Ajouter" class="text-white text-left ml-3">Ajouter</a></li>
 	</ul>
 	</header>
 	<div class="container-fluid">
@@ -60,7 +60,7 @@
 						while ($row = $result->fetch(PDO::FETCH_OBJ))
 						{ ?> <!-- ferme php 02 -->
 						    <tr>
-							    <td><img src='assets/image/jarditou/tableau/<?= $row->pro_id; ?>.<?= $row->pro_photo; ?>' alt='<?= $row->pro_libelle; ?>' title='<?= $row->pro_libelle; ?>' class="imgTab rounded"></td>
+							    <td><img src='assets/image/tableau/<?= $row->pro_id; ?>.<?= $row->pro_photo; ?>' alt='<?= $row->pro_libelle; ?>' title='<?= $row->pro_libelle; ?>' class="imgTab rounded"></td>
 							    <td><?= $row->pro_id; ?></td>
 							    <td><?= $row->pro_ref; ?></td>
 							    <td><?= $row->pro_libelle; ?></td>
